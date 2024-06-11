@@ -8,6 +8,12 @@ const InputAdornment: Components<Omit<Theme, 'components'>>['MuiInputAdornment']
       paddingRight: theme.spacing(0.75),
       color: theme.palette.text.secondary,
       fontSize: theme.typography.h6.fontSize,
+
+      '&.MuiInputAdornment-sizeSmall': {
+        '& .MuiBox-root': {
+          fontSize: theme.typography.body1.fontSize,
+        },
+      },
     }),
   },
 };

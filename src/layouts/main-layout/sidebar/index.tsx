@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import DrawerItems from './drawer-items';
+import DrawerItems from './DrawerItems';
 
 interface SidebarProps {
   mobileOpen: boolean;
@@ -21,7 +21,9 @@ const Sidebar = ({ mobileOpen, setMobileOpen, setIsClosing }: SidebarProps) => {
   return (
     <Box
       component="nav"
-      sx={{ width: { lg: 300 }, flexShrink: { lg: 0 }, display: { xs: 'none', lg: 'block' } }}
+      width={{ lg: 300 }}
+      flexShrink={{ lg: 0 }}
+      display={{ xs: 'none', lg: 'block' }}
     >
       <Drawer
         variant="temporary"

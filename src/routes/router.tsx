@@ -8,59 +8,54 @@ import Splash from 'components/loading/Splash';
 import PageLoader from 'components/loading/PageLoader';
 
 const App = lazy(() => import('App'));
-const Reports = lazy(() => import('pages/dashboard/reports'));
+const Dashboard = lazy(() => import('pages/dashboard'));
 const Login = lazy(() => import('pages/authentication/Login'));
 const Signup = lazy(() => import('pages/authentication/Signup'));
 
-const router = createBrowserRouter(
-  [
-    {
-      element: (
-        <Suspense fallback={<Splash />}>
-          <App />
-        </Suspense>
-      ),
-      children: [
-        {
-          path: '/',
-          element: (
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-                <Outlet />
-              </Suspense>
-            </MainLayout>
-          ),
-          children: [
-            {
-              index: true,
-              element: <Reports />,
-            },
-          ],
-        },
-        {
-          path: rootPaths.authRoot,
-          element: (
-            <AuthLayout>
-              <Outlet />
-            </AuthLayout>
-          ),
-          children: [
-            {
-              path: paths.login,
-              element: <Login />,
-            },
-            {
-              path: paths.signup,
-              element: <Signup />,
-            },
-          ],
-        },
-      ],
-    },
-  ],
+const router = createBrowserRouter([
   {
-    basename: '/dashdarkX',
+    element: (
+      <Suspense fallback={<Splash />}>
+        <App />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: '/',
+        element: (
+          <MainLayout>
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
+          </MainLayout>
+        ),
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+        ],
+      },
+      {
+        path: rootPaths.authRoot,
+        element: (
+          <AuthLayout>
+            <Outlet />
+          </AuthLayout>
+        ),
+        children: [
+          {
+            path: paths.login,
+            element: <Login />,
+          },
+          {
+            path: paths.signup,
+            element: <Signup />,
+          },
+        ],
+      },
+    ],
   },
-);
+]);
 
 export default router;
