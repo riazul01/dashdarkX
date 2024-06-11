@@ -74,7 +74,7 @@ const DrawerItems = () => {
         {profileListData && <ProfileListItem {...profileListData} />}
       </List>
 
-      <Box px={3.5} py={6} width={1}>
+      <Box px={3.5} pt={6} pb={20} width={1}>
         <Button
           variant="contained"
           color="primary"
